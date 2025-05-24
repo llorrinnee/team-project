@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Lotus Coffee</title>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+     <link rel="icon" type="image/x-icon" href="icon.png">
+     <style>
+          * {
+               box-sizing: border-box;
+               margin: 0;
+               padding: 0;
+          }
+
+          body {
+               font-family: 'Poppins', sans-serif;
+               margin: 0;
+               padding: 0;
+               text-align: center;
+               background-color: #f8f8f8;
+               color: #333;
+               line-height: 1.6;
+          }
+
+          html {
+               scroll-behavior: smooth;
+          }
+
+
+          .top-header {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 15px 5%;
+               background-color: #3c1006;
+               border-bottom: 2px solid #fff;
+               position: sticky;
+               top: 0;
+               z-index: 1000;
+               box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          }
+
+          .site-logo {
+               transition: all 0.3s ease;
+          }
+
+          .site-logo:hover {
+               transform: scale(1.05);
+          }
+
+          .site-logo img {
+               max-width: 100%;
+               height: auto;
+          }
+
+          .top-menu {
+               display: flex;
+               gap: 30px;
+          }
+
+          .menu-link {
+               text-decoration: none;
+               color: #fff;
+               font-weight: 600;
+               font-size: 18px;
+               padding: 5px 0;
+               transition: all 0.3s ease;
+          }
+
+          .menu-link:hover {
+               color: #dcc7c3;
+               text-decoration: underline;
+          }
+
+          .mobile-menu-toggle {
+               display: none;
+               background: none;
+               border: none;
+               color: #fff;
+               font-size: 24px;
+               cursor: pointer;
+          }
+
+
+          .pink-banner {
+               background-color: #dfd8cd;
+               padding: 30px 0;
+               margin-bottom: 30px;
+          }
+
+          .main-tagline {
+               margin: 0;
+               /* Changed font to Great Vibes */
+               font-family: 'Great Vibes', cursive;
+               font-size: 55px;
+               font-weight: 400;
+               color: #4a332f;
+               text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+               letter-spacing: 1px;
+          }
+
+
+          .slider-wrapper {
+               position: relative;
+               margin: 0 auto 50px;
+               width: 90%;
+               max-width: 1200px;
+          }
+
+          .image-slider {
+               position: relative;
+               margin: auto;
+               background-color: #623817;
+               height: 400px;
+               width: 100%;
+               border-radius: 20px;
+               background-repeat: no-repeat;
+               background-size: cover;
+               background-position: center;
+               transition: background-image 0.5s ease-in-out;
+               box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+               overflow: hidden;
+          }
+
+          .slider-text {
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+               display: flex;
+               flex-direction: column;
+               justify-content: flex-end;
+               align-items: flex-start;
+               padding: 30px;
+               color: white;
+               text-align: left;
+          }
+
+          .slider-title {
+               font-size: 32px;
+               font-weight: 700;
+               margin-bottom: 10px;
+               text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+          }
+
+          .slider-description {
+               font-size: 18px;
+               max-width: 600px;
+               margin-bottom: 20px;
+               text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+          }
+
+          .slider-button {
+               position: absolute;
+               top: 50%;
+               transform: translateY(-50%);
+               background-color: rgba(255, 255, 255, 0.8);
+               color: #4a332f;
+               border: none;
+               width: 40px;
+               height: 40px;
+               border-radius: 50%;
+               cursor: pointer;
+               opacity: 0.7;
+               transition: all 0.3s ease;
+               z-index: 10;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+          }
+
+          .slider-button:hover {
+               opacity: 1;
+               background-color: white;
+          }
+
+          .prev-button {
+               left: 20px;
+          }
+
+          .next-button {
+               right: 20px;
+          }
+
+          .slider-dots {
+               display: flex;
+               justify-content: center;
+               margin-top: 15px;
+          }
+
+          .dot-indicator {
+               width: 12px;
+               height: 12px;
+               background-color: #ccc;
+               border-radius: 50%;
+               margin: 0 5px;
+               display: inline-block;
+               cursor: pointer;
+               transition: all 0.3s ease;
+          }
+
+          .dot-indicator.active {
+               background-color: #623817;
+               transform: scale(1.3);
+          }
+
+          .main-container {
+               width: 90%;
+               max-width: 1200px;
+               margin: auto;
+               padding: 20px 0;
+          }
+
+          .content-section {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               margin: 60px 0;
+               border-top: 2px solid #623817;
+               padding-top: 40px;
+               gap: 40px;
+          }
+
+          .content-section:nth-child(even) {
+               flex-direction: row-reverse;
+          }
+
+          .section-image {
+               width: 50%;
+               height: 350px;
+               border-radius: 15px;
+               background-size: cover;
+               background-position: center;
+               transition: all 0.3s ease;
+               box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+               overflow: hidden;
+          }
+
+          .section-image:hover {
+               transform: scale(1.02);
+               box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+          }
+
+          .section-text {
+               width: 50%;
+               text-align: left;
+          }
+
+          .section-title {
+               font-size: 28px;
+               margin-bottom: 20px;
+               color: #4a332f;
+               position: relative;
+               display: inline-block;
+               padding-bottom: 10px;
+               border-bottom: 3px solid #623817;
+          }
+
+          .section-paragraph {
+               line-height: 1.8;
+               margin-bottom: 25px;
+               font-size: 16px;
+          }
+
+          .pink-button {
+               display: inline-block;
+               padding: 10px 25px;
+               border: none;
+               background-color: #4a332f;
+               color: white;
+               border-radius: 30px;
+               text-decoration: none;
+               font-size: 16px;
+               font-weight: 500;
+               transition: all 0.3s ease;
+               box-shadow: 0 3px 10px rgba(244, 166, 181, 0.3);
+          }
+
+          .pink-button:hover {
+               background-color: #a27246;
+               transform: translateY(-3px);
+               box-shadow: 0 5px 15px rgba(74, 51, 47, 0.3);
+          }
+
+          .features-section {
+               background-color: #dfd8cd;
+               padding: 60px 0;
+               margin: 60px 0;
+          }
+
+          .features-heading {
+               font-size: 32px;
+               color: #4a332f;
+               margin-bottom: 50px;
+          }
+
+          .features-container {
+               display: grid;
+               grid-template-columns: repeat(4, 1fr);
+               gap: 30px;
+               max-width: 1200px;
+               margin: 0 auto;
+               padding: 0 20px;
+          }
+
+          .feature-box {
+               background-color: white;
+               border-radius: 15px;
+               padding: 30px 20px;
+               text-align: center;
+               box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+               transition: all 0.3s ease;
+          }
+
+          .feature-box:hover {
+               transform: translateY(-10px);
+               box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          }
+
+          .feature-icon {
+               font-size: 40px;
+               color: #a27246;
+               margin-bottom: 20px;
+          }
+
+          .feature-name {
+               font-size: 20px;
+               margin-bottom: 15px;
+               color: #4a332f;
+          }
+
+          .feature-text {
+               font-size: 14px;
+               color: #555;
+          }
+
+          /* Newsletter Section */
+          .newsletter-section {
+               background-color: #bc9f7d;
+               padding: 60px 20px;
+               color: white;
+               text-align: center;
+               margin: 60px 0;
+          }
+
+          .newsletter-box {
+               max-width: 600px;
+               margin: 0 auto;
+          }
+
+          .newsletter-title {
+               font-size: 28px;
+               margin-bottom: 20px;
+          }
+
+          .newsletter-text {
+               margin-bottom: 30px;
+               font-size: 16px;
+          }
+
+          .email-form {
+               display: flex;
+               max-width: 500px;
+               margin: 0 auto;
+          }
+
+          .email-input {
+               flex: 1;
+               padding: 15px;
+               border: none;
+               border-radius: 30px 0 0 30px;
+               font-size: 16px;
+               outline: none;
+          }
+
+          .submit-button {
+               padding: 15px 25px;
+               background-color: #4a332f;
+               color: white;
+               border: none;
+               border-radius: 0 30px 30px 0;
+               cursor: pointer;
+               font-size: 16px;
+               font-weight: 500;
+               transition: all 0.3s ease;
+          }
+
+          .submit-button:hover {
+               background-color: #3a2824;
+          }
+
+          .footer-container {
+               background-color: #bc9f7d;
+               padding: 0;
+               width: 100%;
+          }
+
+          .main-footer {
+               background-color: #e6e0d7;
+          }
+
+          .social-section {
+               text-align: center;
+               padding: 20px 0;
+          }
+
+          .social-title {
+               color: #fff;
+               font-weight: bold;
+               font-size: 1.2rem;
+               margin-bottom: 15px;
+          }
+
+          .social-icons {
+               display: flex;
+               justify-content: center;
+               gap: 15px;
+          }
+
+          .social-icon {
+               background-color: #ffffff;
+               color: #a27246;
+               width: 40px;
+               height: 40px;
+               border-radius: 50%;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 1.2rem;
+               text-decoration: none;
+          }
+
+          .main-footer {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 20px 10%;
+               border-top: 1px solid #d0d6e0;
+          }
+
+          .company-info {
+               text-align: left;
+               color: #555;
+          }
+
+          .company-name {
+               font-weight: bold;
+               color: #4a332f;
+               font-size: 1.1rem;
+               margin-bottom: 5px;
+          }
+
+          .company-details {
+               color: #555;
+               font-size: 0.9rem;
+               margin: 3px 0;
+          }
+
+          .company-copyright {
+               color: #555;
+               font-size: 0.9rem;
+          }
+
+          .footer-logo {
+               width: 35px;
+               height: auto;
+          }
+
+          .footer-links {
+               text-align: right;
+          }
+
+
+          .footer-link {
+               display: block;
+               color: #555;
+               text-decoration: none;
+               margin: 10px 0;
+               font-size: 0.9rem;
+               transition: all 0.3s ease;
+          }
+
+          .footer-link:hover {
+               color: #4a332f;
+               transform: translateX(-5px);
+          }
+
+          .scroll-top {
+               position: fixed;
+               bottom: 30px;
+               right: 30px;
+               width: 50px;
+               height: 50px;
+               background-color: #000000;
+               color: white;
+               border-radius: 50%;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 20px;
+               cursor: pointer;
+               opacity: 0;
+               visibility: hidden;
+               transition: all 0.3s ease;
+               z-index: 1000;
+               box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+          }
+
+          .scroll-top.show {
+               opacity: 1;
+               visibility: visible;
+          }
+
+          .scroll-top:hover {
+               background-color: #4a332f;
+               transform: translateY(-5px);
+          }
+
+          @media (max-width: 1024px) {
+               .features-container {
+                    grid-template-columns: repeat(2, 1fr);
+               }
+
+               .main-tagline {
+                    font-size: 38px;
+               }
+
+               .slider-title {
+                    font-size: 28px;
+               }
+
+               .slider-description {
+                    font-size: 16px;
+               }
+          }
+
+          @media (max-width: 768px) {
+               .top-menu {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    flex-direction: column;
+                    background-color: #fff;
+                    padding: 20px 0;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                    gap: 15px;
+               }
+
+               .top-menu.show {
+                    display: flex;
+               }
+
+               .top-menu .menu-link {
+                    color: #3c1006;
+                    padding: 10px 20px;
+               }
+
+               .mobile-menu-toggle {
+                    display: flex;
+               }
+
+               .main-tagline {
+                    font-size: 36px;
+                    padding: 0 10px;
+               }
+
+               .pink-banner {
+                    padding: 35px 15px;
+               }
+
+               .content-section,
+               .content-section:nth-child(even) {
+                    flex-direction: column;
+                    gap: 20px;
+               }
+
+               .section-image,
+               .section-text {
+                    width: 100%;
+               }
+
+               .section-image {
+                    height: 250px;
+               }
+
+               .image-slider {
+                    height: 300px;
+               }
+
+               .slider-title {
+                    font-size: 24px;
+               }
+
+               .slider-description {
+                    font-size: 14px;
+               }
+
+               .main-footer {
+                    flex-direction: column;
+                    gap: 30px;
+                    text-align: center;
+               }
+
+               .company-info,
+               .footer-links {
+                    text-align: center;
+               }
+
+               .email-form {
+                    flex-direction: column;
+                    gap: 10px;
+               }
+
+               .email-input,
+               .submit-button {
+                    width: 100%;
+                    border-radius: 30px;
+               }
+
+               .features-section {
+                    padding: 40px 15px;
+               }
+
+               .newsletter-section {
+                    padding: 40px 15px;
+               }
+          }
+
+          @media (max-width: 480px) {
+               .features-container {
+                    grid-template-columns: 1fr;
+               }
+
+               .main-tagline {
+                    font-size: 28px;
+               }
+
+               .image-slider {
+                    height: 250px;
+               }
+
+               .slider-title {
+                    font-size: 20px;
+               }
+
+               .slider-description {
+                    font-size: 12px;
+               }
+
+               .section-title {
+                    font-size: 22px;
+               }
+
+               .section-paragraph {
+                    font-size: 14px;
+               }
+
+               .features-heading {
+                    font-size: 24px;
+               }
+
+               .newsletter-title {
+                    font-size: 22px;
+               }
+
+               .newsletter-text {
+                    font-size: 14px;
+               }
+
+               .slider-button {
+                    width: 30px;
+                    height: 30px;
+               }
+
+               .prev-button {
+                    left: 10px;
+               }
+
+               .next-button {
+                    right: 10px;
+               }
+          }
+     </style>
+</head>
+
+<body>
+     <header class="top-header">
+          <div class="site-logo">
+               <img src="logo-lotus.png" alt="Logo of Lotus Coffee" width="70" height="70">
+          </div>
+          <nav class="top-menu">
+               <a href="menu.html" class="menu-link">Menu</a>
+               <a href="aboutus.html" class="menu-link">About</a>
+               <a href="account.html" class="menu-link">Login/Register</a>
+          </nav>
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+               <i class="fas fa-bars"></i>
+          </button>
+     </header>
+
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+     <div class="pink-banner">
+          <h2 class="main-tagline">Peace in a Cup, Bloomed by Lotus</h2>
+     </div>
+
+     <div class="slider-wrapper">
+          <div class="image-slider">
+               <div class="slider-text">
+                    <h2 class="slider-title">Experience Premium Coffee</h2>
+                    <p class="slider-description">Discover our handcrafted beverages made with love and the finest
+                         ingredients</p>
+               </div>
+               <button class="slider-button prev-button" aria-label="Previous Slide"><i
+                         class="fas fa-chevron-left"></i></button>
+               <button class="slider-button next-button" aria-label="Next Slide"><i
+                         class="fas fa-chevron-right"></i></button>
+          </div>
+
+          <div class="slider-dots">
+               <span class="dot-indicator"></span>
+               <span class="dot-indicator"></span>
+               <span class="dot-indicator"></span>
+               <span class="dot-indicator"></span>
+               <span class="dot-indicator"></span>
+          </div>
+     </div>
+
+     <div class="main-container">
+          <div class="content-section">
+               <div class="section-image"
+                    style="background-image: url('https://i.pinimg.com/736x/5d/df/fc/5ddffc6b4e479ac4b4f4e5c608091df3.jpg');">
+               </div>
+               <div class="section-text">
+                    <h2 class="section-title">WELCOME TO OUR CAFE</h2>
+                    <p class="section-paragraph"> Welcome to our café! A place to pause, sip, and truly espresso
+                         yourself. Just like that—our
+                         espresso will keep you coming back for more, sip after sip. It's that perfect blend of bold and
+                         smooth
+                         that makes you feel unstoppable. So go ahead, espresso yourself.
+                    </p>
+                    <a href="aboutus.html" class="pink-button">Learn More</a>
+               </div>
+          </div>
+
+          <div class="content-section">
+               <div class="section-image"
+                    style="background-image: url('https://i.pinimg.com/736x/af/8e/cf/af8ecf7ce725fe704e3a4d1098ebfb79.jpg');">
+               </div>
+               <div class="section-text">
+                    <h2 class="section-title">COMMUNITY</h2>
+                    <p class="section-paragraph"> At Lotus Coffee, we believe that coffee is more than just a drink —
+                         it's an experience that
+                         brings people together. Our online space is designed to be an extension of our cozy shop, where
+                         coffee
+                         lovers can connect, share, and discover everything about their favorite brews.
+                    </p>
+                    <a href="community.html" class="pink-button">Join Our Community</a>
+               </div>
+          </div>
+     </div>
+
+     <section class="features-section">
+          <h2 class="features-heading">Why Choose Lotus Brew</h2>
+          <div class="features-container">
+               <div class="feature-box">
+                    <div class="feature-icon">
+                         <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3 class="feature-name">Premium Beans</h3>
+                    <p class="feature-text">We source only the highest quality beans from sustainable farms around the
+                         world.</p>
+               </div>
+               <div class="feature-box">
+                    <div class="feature-icon">
+                         <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-name">Eco-Friendly</h3>
+                    <p class="feature-text">Our packaging and practices are designed with the environment in mind.</p>
+               </div>
+               <div class="feature-box">
+                    <div class="feature-icon">
+                         <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-name">Made with Love</h3>
+                    <p class="feature-text">Every cup is crafted with care by our passionate baristas.</p>
+               </div>
+               <div class="feature-box">
+                    <div class="feature-icon">
+                         <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-name">Community First</h3>
+                    <p class="feature-text">We're more than a coffee shop - we're a gathering place for friends.</p>
+               </div>
+          </div>
+     </section>
+
+     <section class="newsletter-section">
+          <div class="newsletter-box">
+               <h3 class="newsletter-title">Stay Updated</h3>
+               <p class="newsletter-text">Subscribe to our newsletter for exclusive offers, new flavors, and coffee
+                    tips!</p>
+               <form class="email-form">
+                    <input type="email" class="email-input" placeholder="Your email address" name="email" required>
+                    <button type="submit" class="submit-button">Subscribe</button>
+               </form>
+          </div>
+     </section>
+
+     <div class="footer-container">
+          <div class="social-section">
+               <h3 class="social-title">Follow us on</h3>
+               <div class="social-icons">
+                    <a href="https://www.instagram.com/lotuscoffee.ph?igsh=ZzB4ZWxzY2M1MjRr" class="social-icon">
+                         <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61576273525574" class="social-icon">
+                         <i class="fab fa-facebook"></i>
+                    </a>
+               </div>
+          </div>
+
+          <div class="main-footer">
+               <div class="company-info">
+                    <div class="company-name">LOTUS COFFEE PHILIPPINES INC.</div>
+                    <div class="company-details">Company registration no: 635-381-780-00000</div>
+                    <div class="company-info">Recto, Manila</div>
+                    <div class="company-info">Email: lotusbrewcafe@gmail.com</div>
+                    <div class="company-copyright">COPYRIGHT 2025 © LOTUS COFFEE</div>
+               </div>
+               <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms & Conditions</a>
+                    <a href="#" class="footer-link">Customer Support</a>
+                    <a href="#" class="footer-link">Refund Policy</a>
+                    <a href="#" class="footer-link">FAQS</a>
+               </div>
+          </div>
+     </div>
+
+     <button class="scroll-top" aria-label="Back to top">
+          <i class="fas fa-arrow-up"></i>
+     </button>
+
+     <script>
+          window.onload = function () {
+               var sliderImages = [
+                    {
+                         image: "https://post.healthline.com/wp-content/uploads/2020/03/woman-cafe-drinking-coffee-cappuccino-1296x728-header.jpg",
+                         title: "Experience Premium Coffee",
+                         description: "Discover our handcrafted beverages made with love and the finest ingredients"
+                    },
+                    {
+                         image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1000&auto=format&fit=crop",
+                         title: "Artisan Coffee Creations",
+                         description: "Each cup tells a story of passion, craftsmanship and dedication"
+                    },
+                    {
+                         image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1000&auto=format&fit=crop",
+                         title: "A Perfect Start to Your Day",
+                         description: "Begin your morning with our signature espresso blends"
+                    },
+                    {
+                         image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000&auto=format&fit=crop",
+                         title: "Cozy Atmosphere",
+                         description: "Enjoy your favorite brew in our warm and welcoming space"
+                    },
+                    {
+                         image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop",
+                         title: "Coffee & Community",
+                         description: "Where friends meet and memories are made over perfect cups of coffee"
+                    }
+               ];
+
+               var slider = document.querySelector('.image-slider');
+               var sliderTitle = document.querySelector('.slider-title');
+               var sliderDescription = document.querySelector('.slider-description');
+               var dots = document.querySelectorAll('.dot-indicator');
+               var prevButton = document.querySelector('.prev-button');
+               var nextButton = document.querySelector('.next-button');
+               var scrollTopButton = document.querySelector('.scroll-top');
+               var mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+               var topMenu = document.querySelector('.top-menu');
+
+               var currentSlide = 0;
+               var totalSlides = sliderImages.length;
+
+               // Mobile menu toggle
+               mobileMenuToggle.addEventListener('click', function () {
+                    topMenu.classList.toggle('show');
+               });
+
+               function preloadImages() {
+                    for (var i = 0; i < sliderImages.length; i++) {
+                         var img = new Image();
+                         img.src = sliderImages[i].image;
+                         img.crossOrigin = "anonymous";
+                    }
+               }
+
+               function updateSlider() {
+                    slider.style.opacity = '0';
+
+                    setTimeout(function () {
+                         slider.style.backgroundImage = "url('" + sliderImages[currentSlide].image + "')";
+
+                         sliderTitle.textContent = sliderImages[currentSlide].title;
+                         sliderDescription.textContent = sliderImages[currentSlide].description;
+
+                         slider.style.opacity = '1';
+                    }, 300);
+
+                    for (var i = 0; i < dots.length; i++) {
+                         if (i === currentSlide) {
+                              dots[i].classList.add('active');
+                         } else {
+                              dots[i].classList.remove('active');
+                         }
+                    }
+               }
+
+               function nextSlide() {
+                    currentSlide = currentSlide + 1;
+                    if (currentSlide >= totalSlides) {
+                         currentSlide = 0;
+                    }
+                    updateSlider();
+               }
+
+               function prevSlide() {
+                    currentSlide = currentSlide - 1;
+                    if (currentSlide < 0) {
+                         currentSlide = totalSlides - 1;
+                    }
+                    updateSlider();
+               }
+
+               nextButton.onclick = nextSlide;
+               prevButton.onclick = prevSlide;
+
+               for (var i = 0; i < dots.length; i++) {
+                    (function (index) {
+                         dots[index].onclick = function () {
+                              currentSlide = index;
+                              updateSlider();
+                         };
+                    })(i);
+               }
+
+               document.onkeydown = function (e) {
+                    if (e.key === 'ArrowLeft') {
+                         prevSlide();
+                    } else if (e.key === 'ArrowRight') {
+                         nextSlide();
+                    }
+               };
+
+               var slideInterval = setInterval(nextSlide, 5000);
+               slider.onmouseenter = function () {
+                    clearInterval(slideInterval);
+               };
+
+               slider.onmouseleave = function () {
+                    slideInterval = setInterval(nextSlide, 5000);
+               };
+
+               window.onscroll = function () {
+                    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                         scrollTopButton.classList.add('show');
+                    } else {
+                         scrollTopButton.classList.remove('show');
+                    }
+               };
+
+               scrollTopButton.onclick = function () {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+               };
+
+               slider.style.transition = 'opacity 0.3s ease-in-out';
+
+               preloadImages();
+               updateSlider();
+          };
+     </script>
+</body>
+
+</html>
